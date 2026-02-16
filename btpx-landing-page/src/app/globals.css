@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+:root {
+  /* Azuis Institucionais */
+  --primary-dark: #002753;
+  --primary: #004A8F;
+  --primary-light: #2FC3FF;
+
+  /* Laranja (CTAs) */
+  --accent: #FF7800;
+  --accent-hover: #E66D00;
+
+  /* Secundário */
+  --secondary: #05183A;
+  --secondary-hover: #0D1C44;
+
+  /* Neutros */
+  --white: #FFFFFF;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --background: #F8FAFC;
+  --foreground: #333333;
+}
+
+@theme inline {
+  --color-primary-dark: var(--primary-dark);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  --font-titillium: var(--font-titillium-web);
+  --font-poppins: var(--font-poppins);
+}
+
+body {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(at 0% 0%, hsla(210, 100%, 96%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(210, 100%, 98%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(210, 100%, 96%, 1) 0, transparent 50%);
+  color: var(--foreground);
+  font-family: var(--font-poppins), sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-titillium-web), sans-serif;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(5, 24, 58, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Immersive Hero Animations */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(255, 120, 0, 0.2), 0 0 10px rgba(255, 120, 0, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(255, 120, 0, 0.6), 0 0 30px rgba(255, 120, 0, 0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes data-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-data-flow {
+  background-size: 200% 100%;
+  animation: data-flow 15s linear infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
