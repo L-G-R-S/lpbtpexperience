@@ -1,81 +1,64 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import Script from 'next/script';
 import { ImmersiveBackground } from '@/components/ui/ImmersiveBackground';
 
 declare global {
     interface Window {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         hbspt: any;
     }
 }
 
 export const FinalCTA = () => {
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.src = "//js.hsforms.net/forms/embed/v2.js";
-        script.charset = "utf-8";
-        script.type = "text/javascript";
-        document.body.appendChild(script);
+    const [isFormLoaded, setIsFormLoaded] = useState(false);
 
-        script.addEventListener('load', () => {
-            if (window.hbspt) {
-                window.hbspt.forms.create({
-                    portalId: "7317937",
-                    formId: "84913dc4-5f75-4d0b-8452-6e943a058527",
-                    region: "na1",
-                    target: '#hubspot-form-wrapper',
-                    css: '', // Remove explícito
-                    onFormReady: function (form: any) {
-                        // O HubSpot passa o form como um objeto jQuery (se jQuery existir) ou um NodeList/Element.
-                        const formEl = document.querySelector('#hubspot-form-wrapper form') as HTMLFormElement;
-                        if (formEl) {
-                            const fields = formEl.querySelectorAll('.hs-form-field');
-                            fields.forEach(field => {
-                                const label = field.querySelector('label:not(.hs-form-booleancheckbox-display)');
-                                const input = field.querySelector('.hs-input:not([type="checkbox"]):not([type="radio"])') as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+    // This function will be called when the next/script has loaded the HS forms API
+    const loadHubSpotForm = () => {
+        if (window.hbspt && !isFormLoaded) {
+            window.hbspt.forms.create({
+                portalId: "7317937",
+                formId: "84913dc4-5f75-4d0b-8452-6e943a058527",
+                region: "na1",
+                target: '#hubspot-form-wrapper',
+                css: '',
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+                onFormReady: function (form: any) {
+                    setIsFormLoaded(true);
+                    const formEl = document.querySelector('#hubspot-form-wrapper form') as HTMLFormElement;
+                    if (formEl) {
+                        const fields = formEl.querySelectorAll('.hs-form-field');
+                        fields.forEach(field => {
+                            const label = field.querySelector('label:not(.hs-form-booleancheckbox-display)');
+                            const input = field.querySelector('.hs-input:not([type="checkbox"]):not([type="radio"])') as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 
-
-
-                                if (input) {
-                                    // Pega o texto da label. Se ela for vazia (ex: campo "empresa"), tenta pegar do placeholder preexistente ou do 'name'
-                                    let labelText = '';
-
-                                    if (label && label.textContent && label.textContent.trim() !== '') {
-                                        labelText = label.textContent.trim();
-                                    } else {
-                                        // Fallbacks para campos ocultos pelo Hubspot
-                                        if (input.name === 'email') labelText = 'E-mail corporativo*';
-                                        if (input.name === 'company') labelText = 'Empresa*';
-                                        if (input.name === 'phone') labelText = 'DDD + Telefone*';
-                                    }
-
-                                    // Removemos o asterisco do HUB se já houver asterisco do fallback, evitamos duplicação visual
-
-                                    if (input.tagName === 'SELECT') {
-                                        const firstOption = input.querySelector('option');
-                                        if (firstOption && (!firstOption.value || firstOption.value === '')) {
-                                            firstOption.textContent = labelText;
-                                        }
-                                    } else if (input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') {
-                                        (input as HTMLInputElement | HTMLTextAreaElement).placeholder = labelText;
-                                    }
+                            if (input) {
+                                let labelText = '';
+                                if (label && label.textContent && label.textContent.trim() !== '') {
+                                    labelText = label.textContent.trim();
+                                } else {
+                                    if (input.name === 'email') labelText = 'E-mail corporativo*';
+                                    if (input.name === 'company') labelText = 'Empresa*';
+                                    if (input.name === 'phone') labelText = 'DDD + Telefone*';
                                 }
-                            });
-                        }
-                    }
-                });
-            }
-        });
 
-        return () => {
-            // Cleanup function para evitar múltiplos scripts se o componente desmontar
-            const existingScript = document.querySelector('script[src="//js.hsforms.net/forms/embed/v2.js"]');
-            if (existingScript && existingScript.parentNode) {
-                existingScript.parentNode.removeChild(existingScript);
-            }
-        };
-    }, []);
+                                if (input.tagName === 'SELECT') {
+                                    const firstOption = input.querySelector('option');
+                                    if (firstOption && (!firstOption.value || firstOption.value === '')) {
+                                        firstOption.textContent = labelText;
+                                    }
+                                } else if (input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') {
+                                    (input as HTMLInputElement | HTMLTextAreaElement).placeholder = labelText;
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    };
 
     return (
         <section className="py-24 bg-[var(--primary-dark)] text-white relative overflow-hidden" id="contact">
@@ -114,7 +97,13 @@ export const FinalCTA = () => {
                         <h3 className="text-2xl font-bold mb-6 text-[var(--secondary)]">
                             Fale com a Prime Control
                         </h3>
-                        <div id="hubspot-form-wrapper"></div>
+                        <div id="hubspot-form-wrapper" className="min-h-[400px]"></div>
+                        <Script
+                            src="//js.hsforms.net/forms/embed/v2.js"
+                            strategy="lazyOnload"
+                            onReady={loadHubSpotForm}
+                            onLoad={loadHubSpotForm}
+                        />
                     </div>
                 </div>
             </div>

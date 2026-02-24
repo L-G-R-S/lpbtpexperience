@@ -1,96 +1,86 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from '@/components/ui/Card';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { ImmersiveBackground } from '@/components/ui/ImmersiveBackground';
 
-const steps = [
-    {
-        number: "01",
-        title: "Diagnóstico e Prontidão",
-        subtitle: "SAP Readiness & Clean Core (AI-Assessed)"
-    },
-    {
-        number: "02",
-        title: "Direcionamento Estratégico",
-        subtitle: "SAP Transformation & Innovation Roadmap"
-    },
-    {
-        number: "03",
-        title: "Experimentação com Controle",
-        subtitle: "SAP Garage / Labs"
-    },
-    {
-        number: "04",
-        title: "Execução com Governança",
-        subtitle: "SAP Integrations & AI Enablement"
-    },
-    {
-        number: "05",
-        title: "Operação Inteligente",
-        subtitle: "SAP Intelligent AMS (AI-Driven Operations)"
-    }
-];
+import { JOURNEY_STEPS } from '@/lib/constants';
 
 export const Journey = () => {
+    const [expandedIndices, setExpandedIndices] = useState<number[]>([0]);
+
+    const toggleAccordion = (index: number) => {
+        setExpandedIndices(prev =>
+            prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+        );
+    };
+
     return (
-        <section className="py-24 bg-white relative overflow-hidden" id="journey">
+        <section className="py-24 bg-gray-50 relative overflow-hidden" id="journey">
             <div className="container mx-auto px-4 lg:px-8">
                 <div className="text-center mb-20">
                     <div className="inline-block px-4 py-2 bg-[var(--primary)]/5 text-[var(--primary)] rounded-full text-sm font-bold mb-6 border border-[var(--primary)]/10">
-                        NOSSO PROCESSO
+                        NOSSOS SERVIÇOS
                     </div>
                     <h2 className="text-3xl md:text-5xl font-bold text-[var(--secondary)] mb-6 leading-tight">
                         Da avaliação à <span className="text-[var(--primary)]">operação inteligente</span>
                     </h2>
                 </div>
 
-                {/* Timeline Container */}
-                <div className="relative mb-32">
-                    {/* Desktop Line (Horizontal) */}
-                    <div className="hidden lg:block absolute top-8 left-0 w-full h-1 bg-gray-100/80 rounded-full -z-0">
-                        <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-[var(--primary)] to-[var(--primary-light)] w-full opacity-20"></div>
-                    </div>
+                {/* Vertical Accordion Timeline */}
+                <div className="max-w-3xl mx-auto mb-32">
+                    <div className="flex flex-col gap-4 relative">
+                        {JOURNEY_STEPS.map((step, index) => {
+                            const isExpanded = expandedIndices.includes(index);
 
-                    {/* Mobile Line (Vertical) */}
-                    <div className="lg:hidden absolute top-0 left-8 w-1 h-full bg-gray-100 -z-0">
-                        <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-[var(--primary)] to-[var(--primary-light)] h-full opacity-20"></div>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-4 relative z-10">
-                        {steps.map((step, index) => (
-                            <div key={index} className="flex lg:flex-col items-start lg:items-center gap-6 lg:gap-8 group">
-                                {/* Node/Circle */}
-                                <div className="relative shrink-0">
-                                    <div className="w-16 h-16 rounded-full bg-white border-4 border-gray-100 flex items-center justify-center text-xl font-bold text-[var(--secondary)] shadow-lg group-hover:border-[var(--primary)] group-hover:scale-110 group-hover:text-[var(--primary)] transition-all duration-300 z-10 relative">
-                                        {step.number}
-                                    </div>
-                                    {/* Mobile Connector adjustment */}
-                                    {index !== steps.length - 1 && (
-                                        <div className="lg:hidden absolute top-16 left-1/2 w-1 h-24 bg-gray-100 -translate-x-1/2 -z-10"></div>
-                                    )}
-                                </div>
-
-                                {/* Content */}
-                                <div className="pt-2 lg:text-center lg:w-full">
-                                    <h3 className="font-bold text-[var(--secondary)] text-xl mb-3 group-hover:text-[var(--primary)] transition-colors">
-                                        {step.title}
-                                    </h3>
-                                    <p className="text-sm text-gray-500 font-medium leading-relaxed max-w-[200px] lg:mx-auto">
-                                        {step.subtitle}
-                                    </p>
-
-                                    {/* Desktop Arrow */}
-                                    {index !== steps.length - 1 && (
-                                        <div className="hidden lg:block absolute top-8 -right-[50%] w-full flex justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-
+                            return (
+                                <div key={index} className="flex gap-6 lg:gap-8 group">
+                                    {/* Timeline Node & Line */}
+                                    <div className="relative shrink-0 flex flex-col items-center">
+                                        <div className={`w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-white border-4 flex items-center justify-center text-lg lg:text-xl font-bold shadow-sm transition-all duration-300 z-10 relative 
+                                            ${isExpanded ? 'border-[var(--primary)] text-[var(--primary)]' : 'border-gray-100 text-[var(--secondary)] group-hover:border-[var(--primary-light)] group-hover:text-[var(--primary-light)]'}`}>
+                                            {step.number}
                                         </div>
-                                    )}
+                                        {/* Connector Line */}
+                                        {index !== JOURNEY_STEPS.length - 1 && (
+                                            <div className={`w-1 bg-gray-100 flex-grow transition-all duration-300 ${isExpanded ? 'bg-gradient-to-b from-[var(--primary)] to-transparent opacity-30' : ''} my-1`}></div>
+                                        )}
+                                    </div>
+
+                                    {/* Accordion Content */}
+                                    <div className="flex-grow pt-2 lg:pt-3 pb-8">
+                                        <button
+                                            onClick={() => toggleAccordion(index)}
+                                            className="w-full flex items-center justify-between text-left focus:outline-none group/btn"
+                                            aria-expanded={isExpanded}
+                                        >
+                                            <h3 className={`font-bold text-xl lg:text-2xl transition-colors duration-300 ${isExpanded ? 'text-[var(--primary)]' : 'text-[var(--secondary)] group-hover/btn:text-[var(--primary-light)]'}`}>
+                                                {step.title}
+                                            </h3>
+                                            <div className={`shrink-0 ml-4 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isExpanded ? 'bg-[var(--primary)]/10 text-[var(--primary)] rotate-180' : 'bg-gray-50 text-gray-400 group-hover/btn:bg-[var(--primary-light)]/10 group-hover/btn:text-[var(--primary-light)]'}`}>
+                                                <ChevronDown className="w-5 h-5" />
+                                            </div>
+                                        </button>
+
+                                        <div
+                                            className={`grid transition-all duration-300 ease-in-out origin-top
+                                                ${isExpanded ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}
+                                            `}
+                                        >
+                                            <div className="overflow-hidden">
+                                                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100/50">
+                                                    <p className="text-gray-600 font-medium leading-relaxed text-[15px] lg:text-base">
+                                                        {step.subtitle}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
 
@@ -134,7 +124,7 @@ export const Journey = () => {
                             <div className="w-full lg:w-auto flex flex-col gap-4">
                                 <Button
                                     variant="primary"
-                                    className="whitespace-nowrap text-lg px-8 py-5 shadow-xl shadow-orange-500/20 hover:scale-105"
+                                    className="whitespace-nowrap text-lg px-8 py-5 shadow-xl shadow-[var(--accent)]/20 hover:scale-105"
                                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                                 >
                                     Solicitar Diagnóstico <ArrowRight className="ml-2 w-5 h-5" />
