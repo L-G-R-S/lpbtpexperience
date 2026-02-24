@@ -141,3 +141,226 @@ h6 {
 .delay-300 {
   animation-delay: 300ms;
 }
+
+/* HubSpot Form Overrides */
+#hubspot-form-wrapper .hs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+#hubspot-form-wrapper .hs-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+/* Hide labels visually but keep accessible and allow our JS logic to grab content if needed */
+#hubspot-form-wrapper .hs-form-field>label:not(.hs-form-booleancheckbox-display) {
+  display: block;
+  font-size: 0;
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Inputs styling matching original input design */
+#hubspot-form-wrapper .hs-input:not([type="checkbox"]):not([type="radio"]) {
+  width: 100%;
+  background-color: #F2F3F4;
+  border: 2px solid #E5E7EB;
+  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
+  color: #374151;
+  transition: all 0.3s ease;
+  height: 3.5rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+#hubspot-form-wrapper .hs-input:not([type="checkbox"]):not([type="radio"]):focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(0, 74, 143, 0.1);
+}
+
+#hubspot-form-wrapper textarea.hs-input {
+  min-height: 120px;
+  resize: vertical;
+}
+
+#hubspot-form-wrapper select.hs-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 3rem;
+  /* Espaço extra para evitar que o texto encoste na setinha */
+  text-overflow: ellipsis;
+}
+
+#hubspot-form-wrapper .hs-input[type="checkbox"],
+#hubspot-form-wrapper .hs-input[type="radio"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--primary);
+  border: 1px solid #D1D5DB;
+  border-radius: 0.25rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* Error messages styling */
+#hubspot-form-wrapper .hs-error-msgs {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0 0;
+}
+
+#hubspot-form-wrapper .hs-error-msgs label {
+  color: #EF4444;
+  /* red-500 */
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Button styling matching the original submit button */
+#hubspot-form-wrapper .hs-button {
+  width: 100%;
+  background-color: var(--accent);
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  margin-top: 0.5rem;
+  cursor: pointer;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+#hubspot-form-wrapper .hs-button:hover {
+  background-color: var(--accent-hover);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Consent container and texts */
+#hubspot-form-wrapper .legal-consent-container {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+#hubspot-form-wrapper .legal-consent-container .hs-form-booleancheckbox-display {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+
+#hubspot-form-wrapper .legal-consent-container .hs-form-booleancheckbox-display span {
+  line-height: 1.375;
+  flex: 1;
+  padding-top: 1px;
+  /* Micro ajuste ótico para alinhar o texto com a checkbox */
+}
+
+#hubspot-form-wrapper .legal-consent-container p {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #6B7280;
+  line-height: 1.625;
+}
+
+/* HubSpot grid / dependent fields resets */
+#hubspot-form-wrapper .hs-dependent-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#hubspot-form-wrapper .inputs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Fieldset resets */
+#hubspot-form-wrapper fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Base form layout using CSS Grid */
+#hubspot-form-wrapper form.hs-form {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Force 2 columns on larger screens */
+@media (min-width: 768px) {
+  #hubspot-form-wrapper form.hs-form {
+    grid-template-columns: repeat(2, 1fr) !important;
+    align-items: start;
+    row-gap: 1.5rem !important;
+    column-gap: 1.5rem !important;
+  }
+
+  /* Position specific fields into specific rows and columns since HubSpot strips out structural grouping */
+
+  /* Row 1 */
+  #hubspot-form-wrapper .hs_nome_completo {
+    grid-column: 1 / 2 !important;
+  }
+
+  #hubspot-form-wrapper .hs_email {
+    grid-column: 2 / 3 !important;
+  }
+
+  /* Row 2 */
+  #hubspot-form-wrapper .hs_company {
+    grid-column: 1 / 2 !important;
+  }
+
+  #hubspot-form-wrapper .hs_phone {
+    grid-column: 2 / 3 !important;
+  }
+
+  /* Row 3 */
+  #hubspot-form-wrapper .hs_jobtitle {
+    grid-column: 1 / 2 !important;
+  }
+
+  #hubspot-form-wrapper .hs_numemployees {
+    grid-column: 2 / 3 !important;
+  }
+
+  /* Make sure certain fields span full width from Row 4 downwards */
+  #hubspot-form-wrapper .hs_message,
+  #hubspot-form-wrapper .hs_newsletter_noticias,
+  #hubspot-form-wrapper .hs_recaptcha,
+  #hubspot-form-wrapper .hs_submit,
+  #hubspot-form-wrapper .legal-consent-container {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Fix Hubspot default button wrapper */
+#hubspot-form-wrapper .actions {
+  margin-top: 1rem;
+}
