@@ -35,7 +35,12 @@ export const Footer = () => {
                 {/* Right: Saiba Mais & Socials */}
                 <div className="flex flex-col gap-4 items-center md:items-start text-center md:text-left">
                     <h4 className="font-bold text-lg uppercase tracking-wider">SAIBA MAIS</h4>
-                    <Link href="#" className="text-gray-300 text-sm hover:text-white transition-colors">
+                    <Link
+                        href="https://www.primecontrol.com.br/politica-de-privacidade"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-300 text-sm hover:text-white transition-colors"
+                    >
                         Política de privacidade
                     </Link>
                     <div className="flex gap-4 mt-2 justify-center md:justify-start">
