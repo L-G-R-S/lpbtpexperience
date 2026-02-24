@@ -9,7 +9,9 @@ import { ImmersiveBackground } from '@/components/ui/ImmersiveBackground';
 import { JOURNEY_STEPS } from '@/lib/constants';
 
 export const Journey = () => {
-    const [expandedIndices, setExpandedIndices] = useState<number[]>([0]);
+    const [expandedIndices, setExpandedIndices] = useState<number[]>(
+        JOURNEY_STEPS.map((_, index) => index)
+    );
 
     const toggleAccordion = (index: number) => {
         setExpandedIndices(prev =>
