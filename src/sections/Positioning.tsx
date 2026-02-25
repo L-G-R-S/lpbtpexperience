@@ -24,8 +24,8 @@ export const Positioning = () => {
                     </div>
 
                     <div className="w-full pb-0.5 flex flex-col justify-start items-start">
-                        <h2 className="text-[#05183A] text-3xl lg:text-[40px] font-bold font-heading leading-tight">
-                            Aplicamos IA no negócio&nbsp;real,<br />
+                        <h2 className="text-[#05183A] text-3xl lg:text-[40px] font-bold font-heading leading-tight break-words">
+                            <span className="whitespace-nowrap md:whitespace-normal">Aplicamos IA no negócio real,</span><br />
                             conectando:
                         </h2>
                     </div>
