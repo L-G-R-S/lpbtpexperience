@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import Script from 'next/script';
 import { ImmersiveBackground } from '@/components/ui/ImmersiveBackground';

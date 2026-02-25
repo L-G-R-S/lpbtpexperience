@@ -44,10 +44,10 @@ export const Footer = () => {
                         Política de privacidade
                     </Link>
                     <div className="flex gap-4 mt-2 justify-center md:justify-start">
-                        <SocialIcon href="https://www.instagram.com/primecontrol_br" icon={Instagram} label="Instagram" />
-                        <SocialIcon href="https://www.facebook.com/primecontrol" icon={Facebook} label="Facebook" />
-                        <SocialIcon href="https://www.linkedin.com/company/prime-control" icon={Linkedin} label="LinkedIn" />
-                        <SocialIcon href="https://www.youtube.com/@primecontrol5839" icon={Youtube} label="YouTube" />
+                        <SocialIcon href="https://www.instagram.com/primecontrol_br" icon={Instagram} />
+                        <SocialIcon href="https://www.facebook.com/primecontrol" icon={Facebook} />
+                        <SocialIcon href="https://www.linkedin.com/company/prime-control" icon={Linkedin} />
+                        <SocialIcon href="https://www.youtube.com/@primecontrol5839" icon={Youtube} />
                     </div>
                 </div>
 
@@ -56,14 +56,13 @@ export const Footer = () => {
     );
 };
 
-const SocialIcon = ({ href, icon: Icon, label }: { href: string; icon: React.ElementType, label: string }) => (
+const SocialIcon = ({ href, icon: Icon }: { href: string; icon: React.ElementType }) => (
     <Link
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={label}
         className="w-10 h-10 bg-white rounded flex items-center justify-center hover:bg-gray-200 transition-colors"
     >
-        <Icon className="w-6 h-6 text-[var(--primary-dark)]" aria-hidden="true" />
+        <Icon className="w-6 h-6 text-[var(--primary-dark)]" />
     </Link>
 );

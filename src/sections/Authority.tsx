@@ -43,7 +43,7 @@ export const Authority = () => {
 
                     <header className="flex flex-col items-start w-full">
                         <h2 className="text-3xl lg:text-[40px] font-bold font-heading leading-tight break-words">
-                            <span className="text-[#05183A]">Reconhecimento<br />e </span>
+                            <span className="text-[#05183A]">Reconhecimento e<br className="hidden md:block" /></span>
                             <span className="text-[#F97415]">experiência comprovada</span>
                         </h2>
                     </header>
@@ -74,6 +74,7 @@ export const Authority = () => {
 
                     {/* Main image container */}
                     <div className="absolute top-[16px] left-[13px] w-[494px] h-[468px] rounded-[26px] overflow-hidden shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] bg-[#0A224F]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                             src="/images/FOTOBTP.jpg"
                             alt="Equipe Prime Control"
@@ -85,6 +86,7 @@ export const Authority = () => {
 
                 {/* Mobile Image Fallback */}
                 <div className="relative w-full aspect-square shrink-0 block md:hidden rounded-[27px] overflow-hidden shadow-2xl bg-[#0A224F]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         src="/images/FOTOBTP.jpg"
                         alt="Equipe Prime Control"
