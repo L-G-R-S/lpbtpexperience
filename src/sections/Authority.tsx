@@ -75,9 +75,9 @@ export const Authority = () => {
                     {/* Main image container */}
                     <div className="absolute top-[16px] left-[13px] w-[494px] h-[468px] rounded-[26px] overflow-hidden shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] bg-[#0A224F]">
                         <img
-                            src="/images/equipe-prime.jpeg"
+                            src="/images/FOTOBTP.jpg"
                             alt="Equipe Prime Control"
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                         />
                     </div>
@@ -86,9 +86,9 @@ export const Authority = () => {
                 {/* Mobile Image Fallback */}
                 <div className="relative w-full aspect-square shrink-0 block md:hidden rounded-[27px] overflow-hidden shadow-2xl bg-[#0A224F]">
                     <img
-                        src="/images/equipe-prime.jpeg"
+                        src="/images/FOTOBTP.jpg"
                         alt="Equipe Prime Control"
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover"
                         loading="lazy"
                     />
                 </div>
