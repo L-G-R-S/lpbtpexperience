@@ -44,7 +44,7 @@ export const Authority = () => {
 
                     <header className="flex flex-col items-start w-full">
                         <h2 className="text-3xl lg:text-[40px] font-bold font-heading leading-tight break-words">
-                            <span className="text-[#05183A]">Reconhecimento e<br className="hidden md:block" /></span>
+                            <span className="text-[#05183A]">Reconhecimento e<br /></span>
                             <span className="text-[#F97415]">experiência comprovada</span>
                         </h2>
                     </header>

@@ -55,7 +55,7 @@ export const Particles = () => {
         const initParticles = () => {
             particles = [];
             // Create roughly 100 particles for a subtle starry effect, adapt for mobile vs desktop
-            const particleDensity = window.innerWidth < 768 ? 20000 : 10000;
+            const particleDensity = window.innerWidth < 768 ? 20000 : 35000;
             const particleCount = Math.floor((window.innerWidth * window.innerHeight) / particleDensity);
 
             for (let i = 0; i < particleCount; i++) {

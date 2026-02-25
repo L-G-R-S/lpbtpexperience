@@ -17,7 +17,6 @@ export const ImmersiveBackground = () => {
 
             {/* Layer 3: Animated Data Flow - Horizontal Lines */}
             <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--primary-light)] to-transparent opacity-20 animate-data-flow"></div>
                 <div
                     className="absolute bottom-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-10 animate-data-flow"
                     style={{ animationDuration: '20s', animationDelay: '2s' }}

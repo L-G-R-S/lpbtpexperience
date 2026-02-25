@@ -10,14 +10,23 @@ export const Footer = () => {
             <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between gap-12">
 
                 {/* Left: Logo & Copyright */}
-                <div className="flex flex-col gap-6 max-w-xs items-center md:items-start text-center md:text-left mx-auto md:mx-0">
-                    <Image
-                        src="/images/logo-white.png"
-                        alt="Prime Control"
-                        width={150}
-                        height={90}
-                        className="h-[90px] w-auto object-contain"
-                    />
+                <div className="flex flex-col gap-6 items-center md:items-start text-center md:text-left mx-auto md:mx-0">
+                    <div className="flex flex-row items-center justify-center md:justify-start gap-6 flex-nowrap">
+                        <Image
+                            src="/images/logo-white.png"
+                            alt="Prime Control"
+                            width={150}
+                            height={90}
+                            className="h-[50px] md:h-[70px] w-auto object-contain shrink-0"
+                        />
+                        <Image
+                            src="/images/sap-silver-partner.png"
+                            alt="SAP Silver Partner"
+                            width={148}
+                            height={86}
+                            className="h-[28px] md:h-[36px] w-auto object-contain shrink-0"
+                        />
+                    </div>
                     <p className="text-gray-400 text-sm">
                         Copyright © 2025 | All Rights Reserved
                     </p>

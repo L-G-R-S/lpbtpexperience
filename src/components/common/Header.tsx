@@ -17,11 +17,12 @@ export const Header = () => {
 
     return (
         <header
-            className={`fixed w-full z-50 transition-all duration-300 h-[80px] flex items-center ${isScrolled ? 'bg-[var(--primary-dark)]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+            className={`fixed w-full z-50 transition-all duration-300 flex flex-col ${isScrolled ? 'bg-[var(--primary-dark)]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
                 }`}
         >
-            <div className="container mx-auto px-4 lg:px-8 flex items-center justify-center lg:justify-between h-full">
+            <div className="container mx-auto px-4 lg:px-8 flex items-center justify-center lg:justify-between h-[80px]">
                 <Link href="/" className="relative z-50 flex items-center h-full -ml-6 lg:ml-0">
+
                     <Image
                         src="/images/logo-white.png"
                         alt="Prime Control"
@@ -32,6 +33,8 @@ export const Header = () => {
                 </Link>
 
             </div>
+            {/* Animated Bottom Border */}
+            <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--primary-light)] to-transparent opacity-30 animate-data-flow"></div>
         </header>
     );
 };

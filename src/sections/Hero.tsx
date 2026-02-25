@@ -37,10 +37,7 @@ export const Hero = () => {
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up delay-150">
                     Transformamos seu SAP com <br className="hidden md:block" />
-                    <span
-                        className="text-[var(--primary-light)]"
-                        style={{ textShadow: '0 0 25px rgba(47,195,255,0.6), 0 0 50px rgba(47,195,255,0.3)' }}
-                    >
+                    <span className="text-[var(--primary-light)] hero-text-glow">
                         BTP, IA e Clean Core
                     </span>
                 </h1>
