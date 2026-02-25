@@ -8,6 +8,7 @@ import { Authority } from '@/sections/Authority';
 import { Stats } from '@/sections/Stats';
 import { Journey } from '@/sections/Journey';
 import { FinalCTA } from '@/sections/FinalCTA';
+import { ScrollToTop } from '@/components/ui/ScrollToTop';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Journey />
       <FinalCTA />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }
