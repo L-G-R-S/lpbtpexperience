@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/Card';
 import { ArrowRight, CheckCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { ImmersiveBackground } from '@/components/ui/ImmersiveBackground';
+import { AnimatedBlobs } from '@/components/ui/AnimatedBlobs';
 
 import { JOURNEY_STEPS } from '@/lib/constants';
 
@@ -21,12 +22,15 @@ export const Journey = () => {
 
     return (
         <section className="py-24 bg-gray-50 relative overflow-hidden" id="journey">
-            <div className="container mx-auto px-4 lg:px-8">
-                <div className="text-center mb-20">
+            {/* Animated Light Effects (Prime Design System) */}
+            <AnimatedBlobs />
+
+            <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8 relative z-10">
+                <div className="text-center mb-20 relative z-10">
                     <div className="inline-block px-4 py-2 bg-[var(--primary)]/5 text-[var(--primary)] rounded-full text-sm font-bold mb-6 border border-[var(--primary)]/10">
                         NOSSOS SERVIÇOS
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-[var(--secondary)] mb-6 leading-tight">
+                    <h2 className="text-3xl lg:text-[40px] font-bold font-heading text-[var(--secondary)] mb-6 leading-tight">
                         Da avaliação à <span className="text-[var(--primary)]">operação inteligente</span>
                     </h2>
                 </div>
@@ -58,7 +62,7 @@ export const Journey = () => {
                                             className="w-full flex items-center justify-between text-left focus:outline-none group/btn"
                                             aria-expanded={isExpanded}
                                         >
-                                            <h3 className={`font-bold text-xl lg:text-2xl transition-colors duration-300 ${isExpanded ? 'text-[var(--primary)]' : 'text-[var(--secondary)] group-hover/btn:text-[var(--primary-light)]'}`}>
+                                            <h3 className={`font-bold font-heading text-xl lg:text-2xl transition-colors duration-300 ${isExpanded ? 'text-[var(--primary)]' : 'text-[var(--secondary)] group-hover/btn:text-[var(--primary-light)]'}`}>
                                                 {step.title}
                                             </h3>
                                             <div className={`shrink-0 ml-4 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isExpanded ? 'bg-[var(--primary)]/10 text-[var(--primary)] rotate-180' : 'bg-gray-50 text-gray-400 group-hover/btn:bg-[var(--primary-light)]/10 group-hover/btn:text-[var(--primary-light)]'}`}>
@@ -100,7 +104,7 @@ export const Journey = () => {
                                     <div className="inline-block px-3 py-1 bg-[var(--accent)]/20 text-[var(--accent)] text-xs font-bold rounded-full mb-4">
                                         PASSO ZERO
                                     </div>
-                                    <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white leading-tight">
+                                    <h3 className="text-2xl md:text-3xl font-bold font-heading mb-4 text-white leading-tight">
                                         Diagnóstico Executivo <span className="text-[var(--accent)]">Gratuito</span>
                                     </h3>
                                     <p className="text-gray-300 text-lg">

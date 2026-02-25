@@ -1,64 +1,96 @@
 import React from 'react';
-import { Award, BadgeCheck, Shield, Store, Database, ShieldCheck } from 'lucide-react';
+import { Award, CheckCircle2, Store, Database, ShieldCheck } from 'lucide-react';
+
+const features = [
+    {
+        id: "sap-silver-partner",
+        title: "SAP Silver Partner",
+        icon: Award,
+    },
+    {
+        id: "sap-btp-competence",
+        title: "Competência em SAP Business Technology Platform",
+        icon: CheckCircle2,
+    },
+    {
+        id: "chatsync-homologated",
+        title: "ChatSync homologado na SAP Store",
+        icon: Store,
+    },
+    {
+        id: "sap-experience",
+        title: "Experiência em SAP ECC e S/4HANA",
+        icon: Database,
+    },
+    {
+        id: "critical-environments",
+        title: "Ambientes críticos com governança e qualidade",
+        icon: ShieldCheck,
+    },
+];
 
 export const Authority = () => {
-    const credentials = [
-        { icon: Award, text: "SAP Silver Partner" },
-        { icon: BadgeCheck, text: "Competência em SAP Business Technology Platform" },
-        { icon: Store, text: "ChatSync homologado na SAP Store" },
-        { icon: Database, text: "Experiência em SAP ECC e S/4HANA" },
-        { icon: ShieldCheck, text: "Ambientes críticos com governança e qualidade" },
-    ];
-
     return (
-        <section className="py-24 bg-white relative">
-            <div className="container mx-auto px-4 lg:px-8">
-                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-
-                    <div className="lg:w-1/2">
-                        <div className="inline-block px-4 py-2 bg-[var(--primary)]/10 text-[var(--primary)] rounded-full text-sm font-bold mb-6">
+        <section className="py-24 bg-[#E8EFF3] relative overflow-hidden flex justify-center items-center">
+            <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 relative z-10 w-full">
+                {/* Left Side: Content */}
+                <div className="flex flex-col w-full lg:w-[560px] items-start gap-8 relative shrink-0 lg:ml-16">
+                    <div className="inline-flex items-start px-4 py-2 bg-[#004A8F]/10 rounded-full">
+                        <p className="font-bold font-sans text-[#004A8F] text-sm leading-5 tracking-[0]">
                             POR QUE A PRIME CONTROL?
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-[var(--secondary)] mb-8 leading-tight">
-                            Reconhecimento e <br />
-                            <span className="text-[var(--primary)]">experiência comprovada</span>
+                        </p>
+                    </div>
+
+                    <header className="flex flex-col items-start w-full">
+                        <h2 className="text-3xl lg:text-[40px] font-bold font-heading leading-tight break-words">
+                            <span className="text-[#05183A]">Reconhecimento e<br className="hidden md:block" /></span>
+                            <span className="text-[#F97415]">experiência comprovada</span>
                         </h2>
+                    </header>
 
-                        <div className="grid gap-4">
-                            {credentials.map((cred, index) => (
-                                <div
-                                    key={index}
-                                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300 border border-transparent hover:border-gray-100 group"
-                                >
-                                    <div className="w-12 h-12 rounded-full bg-[var(--primary-light)]/10 flex items-center justify-center text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white transition-colors duration-300">
-                                        <cred.icon className="w-6 h-6" />
-                                    </div>
-                                    <span className="font-semibold text-[var(--secondary)] text-lg">{cred.text}</span>
+                    <div className="flex flex-col items-start pt-2 w-full gap-5">
+                        {features.map((feature) => (
+                            <div key={feature.id} className="flex items-center gap-4 w-full">
+                                <div className="flex w-12 h-12 items-center justify-center bg-[#F97415]/10 rounded-full shrink-0">
+                                    <feature.icon className="w-5 h-5 text-[#F97415]" strokeWidth={2} />
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="lg:w-1/2">
-                        <div className="relative">
-                            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[var(--accent)]/20 rounded-full blur-2xl"></div>
-                            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-[var(--primary)]/20 rounded-full blur-2xl"></div>
-
-                            <div className="bg-[var(--secondary)] text-white p-10 md:p-14 rounded-3xl relative overflow-hidden shadow-2xl">
-                                <div className="absolute top-0 right-0 p-8 opacity-5 transform rotate-12 scale-150 pointer-events-none">
-                                    <Shield className="w-96 h-96" />
-                                </div>
-
-                                <ShieldCheck className="w-12 h-12 text-[var(--primary-light)] mb-8" />
-
-                                <p className="text-2xl md:text-3xl font-light leading-relaxed relative z-10 mb-8">
-                                    &quot;Não entregamos apenas projetos. Estruturamos a base que permite IA operar no SAP com <strong className="text-[var(--primary-light)] font-bold">segurança e escala</strong>.&quot;
+                                <p className="font-medium text-[#05183A] text-lg font-sans leading-7 break-words">
+                                    {feature.title}
                                 </p>
-
                             </div>
-                        </div>
+                        ))}
                     </div>
+                </div>
 
+                {/* Right Side: Image/Graphic */}
+                <div
+                    className="relative w-full lg:w-[548px] h-[500px] shrink-0 hidden md:block"
+                    role="img"
+                    aria-label="Prime Control team at SAP BTP event"
+                >
+                    {/* Orange decorative blocks */}
+                    <div className="absolute top-[313px] left-[316px] w-[232px] h-[187px] bg-[#F97415] rounded-[32px]"></div>
+                    <div className="absolute top-0 left-0 w-[232px] h-[187px] bg-[#F97415] rounded-[32px]"></div>
+
+                    {/* Main image container */}
+                    <div className="absolute top-[16px] left-[13px] w-[494px] h-[468px] rounded-[26px] overflow-hidden shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] bg-[#0A224F]">
+                        <img
+                            src="/images/container.png"
+                            alt="Equipe Prime Control"
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+
+                {/* Mobile Image Fallback */}
+                <div className="relative w-full aspect-square shrink-0 block md:hidden rounded-[27px] overflow-hidden shadow-2xl bg-[#0A224F]">
+                    <img
+                        src="/images/container.png"
+                        alt="Equipe Prime Control"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                    />
                 </div>
             </div>
         </section>

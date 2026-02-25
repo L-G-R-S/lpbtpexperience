@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { ImmersiveBackground } from '@/components/ui/ImmersiveBackground';
+import { Particles } from '@/components/ui/Particles';
 
 export const Hero = () => {
     const [text, setText] = useState('');
@@ -26,9 +27,10 @@ export const Hero = () => {
         <section className="relative min-h-screen bg-[var(--primary-dark)] text-white flex items-center justify-center pt-20 overflow-hidden">
 
             <ImmersiveBackground />
+            <Particles />
 
             {/* Layer 4: Main Content */}
-            <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
+            <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8 relative z-10 text-center flex flex-col items-center justify-center">
                 <div className="inline-block px-4 py-1 mb-6 rounded-full border border-[var(--primary-light)]/30 bg-[var(--primary-light)]/10 text-[var(--primary-light)] text-sm font-mono tracking-wider animate-fade-in-up">
                     SAP BTP EXPERIENCE 2026
                 </div>
@@ -47,7 +49,7 @@ export const Hero = () => {
                     </p>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-6 justify-center items-center animate-fade-in-up delay-300">
+                <div className="flex flex-col md:flex-row gap-6 justify-center items-center animate-fade-in-up delay-300 w-full">
                     <Button
                         variant="primary"
                         className="animate-pulse-glow hover:scale-105 transition-transform duration-300"

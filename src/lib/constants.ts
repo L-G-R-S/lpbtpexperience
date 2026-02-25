@@ -9,7 +9,8 @@ import {
     GitMerge,
     LayoutTemplate,
     ShieldCheck,
-    Rocket
+    Rocket,
+    Laptop
 } from 'lucide-react';
 
 export const PROBLEMS = [
@@ -67,9 +68,14 @@ export const HOW_WE_WORK_SERVICES = [
         description: "Validação contínua para assegurar estabilidade em ambientes críticos."
     },
     {
-        icon: Rocket,
+        icon: Laptop,
         title: "Programas de IA prontos para escala",
         description: "Arquitetura desenhada para crescer junto com a demanda do negócio."
+    },
+    {
+        icon: Rocket,
+        title: "Aceleradores e Inovação com IA no ambiente SAP",
+        description: "Automação, processos conversacionais e IA."
     }
 ];
 
