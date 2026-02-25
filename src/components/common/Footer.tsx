@@ -19,13 +19,15 @@ export const Footer = () => {
                             height={90}
                             className="h-[50px] md:h-[70px] w-auto object-contain shrink-0"
                         />
-                        <Image
-                            src="/images/sap-silver-partner.png"
-                            alt="SAP Silver Partner"
-                            width={148}
-                            height={86}
-                            className="h-[28px] md:h-[36px] w-auto object-contain shrink-0"
-                        />
+                        <Link href="https://partnerfinder.sap.com/profile/0001677146" target="_blank" rel="noopener noreferrer">
+                            <Image
+                                src="/images/sap-silver-partner.png"
+                                alt="SAP Silver Partner"
+                                width={148}
+                                height={86}
+                                className="h-[28px] md:h-[36px] w-auto object-contain shrink-0"
+                            />
+                        </Link>
                     </div>
                     <p className="text-gray-400 text-sm">
                         Copyright © 2025 | All Rights Reserved
